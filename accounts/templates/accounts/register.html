@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+    <h1>Rejestracja</h1>
+
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg js-register">
+        Rejestruj
+    </button>
+
+
+    <!-- THE MODAL WE WILL BE USING -->
+    <div class="modal fade" id="modal-register">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+
+
+    {% block javascript %}
+        <script src="{% static 'accounts/js/register.js' %}"></script>
+    {% endblock %}
+
+{% endblock %}

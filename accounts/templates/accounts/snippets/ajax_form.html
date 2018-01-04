@@ -1,0 +1,63 @@
+
+
+{% include 'accounts/snippets/form.html' with form_id=form_id form=form %}
+
+
+<script>
+    $(document).ready(function () {
+        var myForm = $('#{{ form_id }}');
+        myForm.submit(function (event) {
+            event.preventDefault();
+            var formData = $(this).serialize();
+            var thisURL = myForm.attr('data-url') || window.location.href;// or set your own url
+            console.log(thisURL);
+            $.ajax({
+                method: "POST",
+                url: thisURL,
+                data: formData,
+                success: handleFormSuccess,
+                error: handleFormError
+            })
+        });
+
+        function handleFormSuccess(data, textStatus, jqXHR) {
+            //console.log(data);
+            //console.log(textStatus);
+            //console.log(jqXHR);
+            myForm[0].reset(); // reset form data
+            // alert("Utworzono konto");
+            $('#{{ modal_id }}').modal('hide');
+            alert("Utworzono konto")
+
+        }
+
+        function clearElement(formGroup, input) {
+            formGroup.find(".invalid-feedback").remove();
+            input.removeClass('is-valid');
+            input.removeClass('is-invalid');
+        }
+
+        function handleFormError(jqXHR, textStatus, errorThrown) {
+            $("#{{ form_id }} > .form-group").each(function () {
+                var input = $(this).find('input').filter(':visible:first');
+                var myName = input.attr('name');
+                clearElement($(this), input);
+
+                if (jqXHR.responseJSON['' + myName + '']) {
+                    myError = jqXHR.responseJSON['' + myName + ''];
+                    var errDiv = document.createElement("div");
+                    errDiv.className = "invalid-feedback";
+                    errDiv.innerText = myError;
+
+                    input.parent().append(errDiv);
+
+                    input.addClass('is-invalid');
+                } else {
+                    input.addClass('is-valid');
+                }
+
+            });
+        }
+    })
+</script>
+
