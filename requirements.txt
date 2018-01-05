@@ -5,9 +5,7 @@ django-widget-tweaks==1.4.1
 djangorestframework==3.7.7
 djangorestframework-jwt==1.11.0
 gunicorn==19.7.1
-Jinja2==2.10
 MarkupSafe==1.0
 psycopg2==2.7.3.2
-PyJWT==1.5.3
 pytz==2017.3
 whitenoise==3.3.1
