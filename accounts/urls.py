@@ -4,28 +4,18 @@ from rest_framework_jwt.views import (
     refresh_jwt_token,
     verify_jwt_token
 )
-from .views import register_json
-
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
-
-
-@api_view(['GET'])
-@permission_classes((IsAuthenticated,))
-def example_view(request, format=None):
-    content = {
-        'user': request.user.name,
-        'status': 'request was permitted'
-    }
-    return Response(content)
-
+from .views import (
+    register_html,
+    example_view,
+    register
+)
 
 urlpatterns = [
-    path('register/', register_json, name='register_json'),
+    path('register-html/', register_html, name='register_html'),
     path('auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('auth/token/obtain/', obtain_jwt_token),
-    path('auth/token/refresh/', refresh_jwt_token),
-    path('auth/token/verify/', verify_jwt_token),
+    path('auth/token/obtain/', obtain_jwt_token, name='obtain-token'),
+    path('auth/token/refresh/', refresh_jwt_token, name='refresh-token'),
+    path('auth/token/verify/', verify_jwt_token, name='verify-token'),
+    path('register/', register, name='register'),
     path('test/', example_view)
 ]
