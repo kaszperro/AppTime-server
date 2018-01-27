@@ -6,9 +6,16 @@ from django.core.validators import RegexValidator
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, name, surname, phone_number, password=None, is_staff=False, is_admin=False,
+    def create_user(self,
+                    email,
+                    name,
+                    surname,
+                    phone_number,
+                    password=None,
+                    is_staff=False,
+                    is_admin=False,
                     is_active=True):
-        print("create_user")
+
         if not email:
             raise ValueError('Users must have an email address')
         if not password:
@@ -29,7 +36,6 @@ class UserManager(BaseUserManager):
         return user
 
     def create_staffuser(self, email, password, name):
-        print("create_staffuser")
         """
         Creates and saves a staff user with the given email and password.
         """
@@ -42,7 +48,6 @@ class UserManager(BaseUserManager):
         return user
 
     def create_superuser(self, email, password, name, surname, phone_number):
-        print("create_superuser")
         """
         Creates and saves a superuser with the given email and password.
         """
@@ -59,7 +64,6 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
-    print("User(AbstractBaseUser)")
     email = models.EmailField(
         verbose_name='email address',
         max_length=255,
