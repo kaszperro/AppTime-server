@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 SECRET_KEY = ')=^ar7%7%0$onva7@s4(3+^=0i@=gniqxobbhhy-5!reukaq*7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = False
+# DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'accounts',
     'widget_tweaks',
     'rest_framework',
-    'salons'
+    'salons',
+    'rolepermissions'
 ]
 
 MIDDLEWARE = [
@@ -145,3 +146,5 @@ REST_FRAMEWORK = {
     ),
 }
 
+
+ROLEPERMISSIONS_MODULE = 'AppTime.roles'
