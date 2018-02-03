@@ -26,7 +26,6 @@ SECRET_KEY = ')=^ar7%7%0$onva7@s4(3+^=0i@=gniqxobbhhy-5!reukaq*7'
 # DEBUG = False
 
 ALLOWED_HOSTS = ['*']
-CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -41,7 +40,8 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'rest_framework',
     'salons',
-    'rolepermissions'
+    'rolepermissions',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -52,7 +52,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware'
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'AppTime.urls'
@@ -149,3 +151,7 @@ REST_FRAMEWORK = {
 
 
 ROLEPERMISSIONS_MODULE = 'AppTime.roles'
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000'
+)
