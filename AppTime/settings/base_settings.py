@@ -153,5 +153,7 @@ REST_FRAMEWORK = {
 ROLEPERMISSIONS_MODULE = 'AppTime.roles'
 
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'https://timetapp-web.herokuapp.com',
+    'http://timetapp-web.herokuapp.com'
 )
