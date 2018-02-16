@@ -150,17 +150,16 @@ REST_FRAMEWORK = {
 }
 
 JWT_AUTH = {
-    'JWT_AUTH_COOKIE': "auth_token"
+    'JWT_AUTH_COOKIE': "JWT"
 }
 
 
 
 ROLEPERMISSIONS_MODULE = 'AppTime.roles'
-CORS_ORIGIN_ALLOW_ALL = True
+#CORS_ORIGIN_ALLOW_ALL = True
 CSRF_COOKIE_HTTPONLY = True
 
-#CORS_ORIGIN_WHITELIST = (
-#    'http://localhost:3000',
-#    'https://timetapp-web.herokuapp.com',
-#    'http://timetapp-web.herokuapp.com'
-#)
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000',
+)
+CORS_ALLOW_CREDENTIALS=True

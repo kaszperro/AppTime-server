@@ -7,7 +7,8 @@ from rest_framework_jwt.views import (
 from .views import (
     register_html,
     example_view,
-    register
+    register,
+    validate_token
 )
 
 urlpatterns = [
@@ -15,7 +16,7 @@ urlpatterns = [
     path('auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('auth/token/obtain/', obtain_jwt_token, name='obtain-token'),
     path('auth/token/refresh/', refresh_jwt_token, name='refresh-token'),
-    path('auth/token/verify/', verify_jwt_token, name='verify-token'),
+    path('auth/token/verify/', validate_token, name='verify-token'),
     path('register/', register, name='register'),
     path('test/', example_view)
 ]

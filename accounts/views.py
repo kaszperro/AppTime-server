@@ -7,6 +7,22 @@ from django.template.loader import render_to_string
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
+from rest_framework_jwt.serializers import VerifyJSONWebTokenSerializer
+from rest_framework_jwt.settings import api_settings
+from rest_framework_jwt.views import JSONWebTokenAPIView
+
+#class VerifyJSONWebToken(JSONWebTokenAPIView):
+
+#    pass
+
+@api_view(['POST'])
+def validate_token(request):
+    data = {'token': request.COOKIES.get(api_settings.JWT_AUTH_COOKIE)}
+    print(data)
+    #return JsonResponse(data)
+    valid_data = VerifyJSONWebTokenSerializer().validate(data)
+    print(valid_data)
+    return JsonResponse(data)
 
 def register_html(request):
     data = dict()
