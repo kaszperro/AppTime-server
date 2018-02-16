@@ -150,7 +150,7 @@ REST_FRAMEWORK = {
 }
 
 JWT_AUTH = {
-    'JWT_AUTH_COOKIE': "token"
+    'JWT_AUTH_COOKIE': "auth_token"
 }
 
 
