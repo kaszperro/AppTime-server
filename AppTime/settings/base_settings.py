@@ -161,5 +161,6 @@ CSRF_COOKIE_HTTPONLY = True
 
 CORS_ORIGIN_WHITELIST = (
     'localhost:3000',
+    'timetapp-web.herokuapp.com:80'
 )
 CORS_ALLOW_CREDENTIALS=True
