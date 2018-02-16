@@ -1,7 +1,5 @@
 # Created by https://www.gitignore.io/api/django,pycharm
 staticfiles/*
-.idea/AppTime.iml
-.idea/AppTime-server.iml
 .idea/misc*
 ### Django ###
 *.log

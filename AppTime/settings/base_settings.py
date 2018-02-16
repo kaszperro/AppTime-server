@@ -149,9 +149,15 @@ REST_FRAMEWORK = {
     ),
 }
 
+JWT_AUTH = {
+    'JWT_AUTH_COOKIE': "token"
+}
+
+
 
 ROLEPERMISSIONS_MODULE = 'AppTime.roles'
 CORS_ORIGIN_ALLOW_ALL = True
+CSRF_COOKIE_HTTPONLY = True
 
 #CORS_ORIGIN_WHITELIST = (
 #    'http://localhost:3000',

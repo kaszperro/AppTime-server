@@ -8,7 +8,6 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
-
 def register_html(request):
     data = dict()
 
@@ -55,4 +54,7 @@ def example_view(request, format=None):
         'status': 'request was permitted'
     }
     return Response(content)
+
+
+
 

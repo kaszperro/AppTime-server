@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/AppTime.iml" filepath="$PROJECT_DIR$/.idea/AppTime.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/AppTime-server.iml" filepath="$PROJECT_DIR$/.idea/AppTime-server.iml" />
     </modules>
   </component>
