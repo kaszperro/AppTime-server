@@ -16,18 +16,22 @@ from rest_framework_jwt.settings import api_settings
 from rest_framework.views import APIView
 from rest_framework import status
 
+from .serializers import UserSerializer
+
 jwt_response_payload_handler = api_settings.JWT_RESPONSE_PAYLOAD_HANDLER
 
 
 
 @api_view(['POST'])
 def validate_token(request):
-    data = {'token': request.COOKIES.get(api_settings.JWT_AUTH_COOKIE)}
+    data = {
+        'token': request.COOKIES.get(api_settings.JWT_AUTH_COOKIE)
+    }
     print(data)
-    # return JsonResponse(data)
-    valid_data = VerifyJSONWebTokenSerializer().validate(data)
-    print(valid_data)
-    return JsonResponse(data)
+    VerifyJSONWebTokenSerializer().validate(data)
+    data['user'] = request.user.name
+    print(data)
+    return Response(data)
 
 
 def register_html(request):
@@ -77,5 +81,12 @@ def example_view(request, format=None):
     }
     return Response(content)
 
+
+@api_view(['GET'])
+@permission_classes((IsAuthenticated,))
+def get_user_info(request):
+    user = request.user
+    serializer = UserSerializer(user, many=False,  context={'request': request})
+    return Response(serializer.data)
 
 

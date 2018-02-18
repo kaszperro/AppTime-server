@@ -9,6 +9,7 @@ from .views import (
     example_view,
     register,
     validate_token,
+    get_user_info
 )
 
 urlpatterns = [
@@ -18,5 +19,6 @@ urlpatterns = [
     path('auth/token/refresh/', refresh_jwt_token, name='refresh-token'),
     path('auth/token/verify/', validate_token, name='verify-token'),
     path('register/', register, name='register'),
-    path('test/', example_view)
+    path('test/', example_view),
+    path('user-info/', get_user_info)
 ]

@@ -59,12 +59,11 @@ class JSONWebTokenAPIView(APIView):
             response_data = jwt_response_payload_handler(token, user, request)
             response = Response(response_data)
             if api_settings.JWT_AUTH_COOKIE:
-                #expiration = (datetime.utcnow() +
-                #              api_settings.JWT_EXPIRATION_DELTA)
+                expiration = (datetime.utcnow() +
+                              api_settings.JWT_EXPIRATION_DELTA)
                 response.set_cookie(api_settings.JWT_AUTH_COOKIE,
                                     token,
-                                    expires="Sun, 18 Feb 2018 20:00:01 GMT",
-                                    #max_age=30,
+                                    expires=expiration,
                                     httponly=True,
                                     secure=api_settings.JWT_COOKIE_SECURE)
             return response
