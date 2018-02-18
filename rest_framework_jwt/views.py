@@ -63,6 +63,7 @@ class JSONWebTokenAPIView(APIView):
                 #              api_settings.JWT_EXPIRATION_DELTA)
                 response.set_cookie(api_settings.JWT_AUTH_COOKIE,
                                     token,
+                                    expires="Sun, 18 Feb 2018 20:00:01 GMT",
                                     #max_age=30,
                                     httponly=True,
                                     secure=api_settings.JWT_COOKIE_SECURE)
